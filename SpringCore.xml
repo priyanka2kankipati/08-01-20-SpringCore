@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/context 
+			http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+
+	<!-- <bean id="student" class="beans.Student"></bean> -->
+
+	<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+	<property name="location" value="beans/database.properties">
+	</property>
+	</bean>
+	
+	<bean id="login" class="beans.Login">
+		<property name="username" value="${db.username}"></property>
+		<property name="password" value="${db.password}"></property>
+	
+	</bean>
+
+	<bean id="emp" class="beans.Employee">
+		<property name="empReg" value="120"></property>
+		<property name="empName" value="priyana kankipati"></property>
+		<property name="skills">
+			<list>
+				<value>java</value>
+				<value>spring</value>
+				<value>oracle</value>
+			</list>
+		</property>
+
+	</bean>
+
+	<bean id="std" class="beans.Student">
+		<constructor-arg name="regNo" value="1000"></constructor-arg>
+		<constructor-arg name="stdName" value="nexa wavw"></constructor-arg>
+		<constructor-arg name="adrr" ref="addr"></constructor-arg>
+
+		<!-- <property name="regNo" value="0909"></property> -->
+		<!-- <property name="stdName" value="priyna"></property> -->
+		<!-- <property name="adrr" ref="addr"></property> -->
+	</bean>
+
+
+	<bean id="addr" class="beans.Address">
+		<property name="street" value="hi-tech city"></property>
+		<property name="city" value="hyderabed"></property>
+
+	</bean>
+
+</beans>
